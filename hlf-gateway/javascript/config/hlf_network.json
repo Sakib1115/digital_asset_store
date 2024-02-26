@@ -1,0 +1,7 @@
+{
+        "walletPath":"/home/spxlpt192/Documents/project/hyperledger/hlf-gateway/javascript/wallet",
+        "channel":"sparx2",
+        "chaincode":"sparx2",
+        "appUser":"001",
+        "connectionProfilePath":"/home/spxlpt192/Documents/project/hyperledger/docker/network/connection-profile.json"
+}

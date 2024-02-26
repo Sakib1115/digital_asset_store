@@ -1,0 +1,7 @@
+{
+        "walletPath":"/home/admin/public_html/SUW2060/hyperledger/hlf-gateway/javascript/wallet",
+        "channel":"extrance",
+        "chaincode":"extrance",
+        "appUser":"001",
+        "connectionProfilePath":"/home/admin/public_html/SUW2060/hyperledger/docker/network/connection-profile.json"
+}

@@ -1,0 +1,48 @@
+{
+	"name": "sparx-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": true,
+		"adminCredential": {
+			"id": "exploreradmin1",
+			"password": "exploreradminpw1"
+		},
+		"enableAuthentication": true,
+		"organization": "SparxMSP",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				},
+				"orderer": "300"
+			}
+		}
+	},
+	"channels": {
+		"sparx2": {
+			"peers": {
+				"peer0.private.sparx.com": {}
+			}
+		}
+	},
+	"organizations": {
+		"SparxMSP": {
+			"mspid": "SparxMSP",
+			"adminPrivateKey": {
+				"path": "/opt/explorer/crypto/peerOrganizations/private.sparx.com/user/admin/msp/keystore/priv_key"
+			},
+			"peers": ["peer0.private.sparx.com"],
+			"signedCert": {
+				"path": "/opt/explorer/crypto/peerOrganizations/private.sparx.com/user/admin/msp/signcerts/cert.pem"
+			}
+		}
+	},
+	"peers": {
+		"peer0.private.sparx.com": {
+			"tlsCACerts": {
+				"path": "/opt/explorer/crypto/peerOrganizations/private.sparx.com/peers/peer0.private.sparx.com/tls/tlscacerts/tls-localhost-7054-ca-sparx.pem"
+			},
+			"url": "grpcs://peer0.private.sparx.com:7051"
+		}
+	}
+}

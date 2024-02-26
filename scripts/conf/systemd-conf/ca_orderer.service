@@ -1,0 +1,19 @@
+# Service definition for Hyperledger fabric ca-orderer server
+[Unit]
+Description=hyperledger fabric-ca-orderer server - ca-Orderer for hyperledger fabric
+Documentation=https://hyperledger-fabric.readthedocs.io/
+Wants=network-online.target
+After=network-online.target
+[Service]
+Type=simple
+Restart=on-failure
+StandardOutput=append:/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/scripts/logs/ca-orderer-sysout.log
+StandardError=append:/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/scripts/logs/ca-orderer-syserr.log
+Environment=FABRIC_CA_SERVER_PORT=8054
+Environment=FABRIC_CA_SERVER_TLS_ENABLED=true
+Environment=FABRIC_CA_SERVER_CA_NAME=ca-orderer
+Environment=FABRIC_CA_HOME=/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/docker/network/ordererOrganizations/fabric-ca
+ExecStart=/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/scripts/binaries/linux-amd64/fabric-ca-server start
+[Install]
+WantedBy=multi-user.target
+# command: sh -c 'fabric-ca-server start -b admin:adminpw -d'

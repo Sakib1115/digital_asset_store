@@ -1,0 +1,34 @@
+# Service definition for Hyperledger fabric orderer server
+[Unit]
+Description=hyperledger fabric-orderer server - Orderer for hyperledger fabric
+Documentation=https://hyperledger-fabric.readthedocs.io/
+Wants=network-online.target
+After=network-online.target
+[Service]
+Type=simple
+Restart=on-failure
+StandardOutput=append:/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/scripts/logs/fabric-orderer-sysout.log
+StandardError=append:/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/scripts/logs/fabric-orderer-syserr.log
+Environment=FABRIC_CFG_PATH=/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/docker/network/ordererOrganizations/gps.com/orderers/orderer01.gps.com/conf-local/
+Environment=FABRIC_LOGGING_SPEC=INFO
+Environment=ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+Environment=ORDERER_GENERAL_LISTENPORT=8051
+Environment=ORDERER_GENERAL_GENESISMETHOD=file
+Environment=GOROOT=/usr/local/go
+Environment=GOPATH=/home/administrator/go
+Environment=ORDERER_GENERAL_GENESISFILE=/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/docker/network/ordererOrganizations/gps.com/system-genesis-block/genesis.block
+Environment=ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+Environment=ORDERER_GENERAL_LOCALMSPDIR=/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/docker/network/ordererOrganizations/gps.com/orderers/orderer01.gps.com/msp
+Environment=ORDERER_GENERAL_TLS_ENABLED=true
+Environment=ORDERER_TLS_DIR=/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/docker/network/ordererOrganizations/gps.com/orderers/orderer01.gps.com/tls
+Environment=ORDERER_GENERAL_TLS_PRIVATEKEY=/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/docker/network/ordererOrganizations/gps.com/orderers/orderer01.gps.com/tls/keystore/priv_key
+Environment=ORDERER_GENERAL_TLS_CERTIFICATE=/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/docker/network/ordererOrganizations/gps.com/orderers/orderer01.gps.com/tls/signcerts/cert.pem
+Environment=ORDERER_GENERAL_TLS_ROOTCAS=[/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/docker/network/ordererOrganizations/gps.com/orderers/orderer01.gps.com/tls/tlscacerts/tls-localhost-8054-ca-orderer.pem]
+Environment=ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+Environment=ORDERER_KAFKA_VERBOSE=true
+Environment=ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/docker/network/ordererOrganizations/gps.com/orderers/orderer01.gps.com/tls/signcerts/cert.pem
+Environment=ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/docker/network/ordererOrganizations/gps.com/orderers/orderer01.gps.com/tls/keystore/priv_key
+Environment=ORDERER_GENERAL_CLUSTER_ROOTCAS=[/home/administrator/digital_asset_store/digital-asset-store-21033983-cpp/private-network-hlf/docker/network/ordererOrganizations/gps.com/orderers/orderer01.gps.com/tls/tlscacerts/tls-localhost-8054-ca-orderer.pem]
+ExecStart=/home/administrator/go/src/github.com/hyperledger/fabric/release/linux-amd64/bin/orderer start
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+{
+"network-configs":{
+	"test-network":{
+		"name":"Sparx Network",
+		"profile":"./connection-profile/sparx-network.json"
+	}
+},
+"license":"Apache-2.0"
+
+
+}
